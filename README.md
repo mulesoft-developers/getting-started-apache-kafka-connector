@@ -2,7 +2,7 @@
 	<img
 	width="150"
 	src="/images/max-terminal.gif"></br>
-	Tutorial Name<br>     
+	Getting Started with the Apache Kafka Connector<br>     
 </h1>
 
 <h4 align="center">
@@ -13,12 +13,12 @@
 </h4>
 	
 <h3 align="center">
-	This is the tutorial short description<br><br>
+	Learn how to produce and consume events from an Apache Kafka cluster.<br><br>
 </h3>
 
 ## Tutorial and Video
 
-For a step by step tutorial navigate to the MuleSoft developer website [here](https://www.youtube.com/watch?v=5Xd5B_twt9w)
+For a step by step tutorial navigate to the MuleSoft developer website [here](https://developer.mulesoft.com/tutorials-and-howtos/apache-kafka-connector/getting-started-apache-kafka/)
 
 For a video of the tutorial go [here](https://www.youtube.com/watch?v=5Xd5B_twt9w).
 
@@ -48,24 +48,8 @@ Install instructions
 
 5. Click on Finish.
 
-## FAQs
-
-#### How do I ?
-
-Answer.
-
 ## Contributing
 
 Contributions are what make the MuleSoft community such an amazing place. Any contributions you make are **greatly appreciated**.
 	
 See [contributing.md](/contributing.md) for the MuleSoft Developer principles.
-
-## Utilities and Dependencies
-
-#### Dependencies
-
--   xxx
-
-#### Code formatting
-
-[Prettier](https://prettier.io/) is a code formatter used to ensure consistent formatting across your code base. To use Prettier with Visual Studio Code, install [this extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) from the Visual Studio Code Marketplace. The [.prettierignore](/.prettierignore) and [.prettierrc](/.prettierrc) files are provided as part of this repository to control the behavior of the Prettier formatter.
