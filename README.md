@@ -43,8 +43,6 @@ Install instructions
 <a href="https://anypoint.mulesoft.com/login/signup" ><img width="250" src="/images/start-platform.png"><a>
 	
 <a href="https://www.mulesoft.com/lp/dl/studio" ><img width="250" src="/images/download-studio.png"><a>
-	
-<a href="https://developer.mulesoft.com/learn/dataweave" ><img width="250" src="/images/open-dataweave.png"><a>
 
 2. Clone this repository.
 
