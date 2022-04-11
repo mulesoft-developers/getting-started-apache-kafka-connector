@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:kafka="http://www.mulesoft.org/schema/mule/kafka"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/kafka http://www.mulesoft.org/schema/mule/kafka/current/mule-kafka.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="kafka-connector-flow" doc:id="d9b0d811-cd1a-4163-a371-8437de32f04b" >
+		<kafka:message-listener doc:name="Subscribe to raw-stream" doc:id="4919ad56-f6dd-491e-b126-5cd476f1b0f3" config-ref="Apache_Kafka_Consumer_configuration"/>
+		<ee:transform doc:name="Transform Message" doc:id="a57e5ad1-91b9-48a6-ad50-d7b72539697e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0 
+output application/json 
+--- 
+read(payload, "application/json")]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<choice doc:name="Fan-Out" doc:id="26f55825-2b51-4bfe-aa0d-48e768c8f214" >
+			<when expression="#[payload.splitvalue &lt;= 5]">
+				<kafka:publish doc:name="Publish to split-one" doc:id="496f98d7-cdf0-48b9-a331-9aec9117fc73" config-ref="Apache_Kafka_Producer_configuration" topic="apalachicola-1388.split-one"/>
+			</when>
+			<otherwise >
+				<kafka:publish doc:name="Publish to split-two" doc:id="2194f887-c16a-4f44-af55-766103590930" config-ref="Apache_Kafka_Producer_configuration" topic="apalachicola-1388.split-two"/>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

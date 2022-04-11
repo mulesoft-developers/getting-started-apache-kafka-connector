@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:kafka="http://www.mulesoft.org/schema/mule/kafka"
+	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/kafka http://www.mulesoft.org/schema/mule/kafka/current/mule-kafka.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="25f78e7d-a0d5-47ff-a922-058d9aa47621" file="${env}.secure.yaml" key="${encryption.key}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+	<kafka:consumer-config name="Apache_Kafka_Consumer_configuration" doc:name="Apache Kafka Consumer configuration" doc:id="ad0fa3a7-c26a-440e-bb9d-579f9747c2ba" >
+		<kafka:consumer-plaintext-connection groupId="${secure::herokuKafka.consumerGroup}" endpointIdentificationAlgorithm='#[""]' >
+			<tls:context >
+				<tls:trust-store path="truststore.p12" password="${secure::herokuKafka.truststorePassword}" type="pkcs12" />
+				<tls:key-store type="pkcs12" path="keystore.p12" keyPassword="${secure::herokuKafka.keystoreKeyPassword}" password="${secure::herokuKafka.keystorePassword}" />
+			</tls:context>
+			<kafka:bootstrap-servers >
+				<kafka:bootstrap-server value="${secure::herokuKafka.serverURLs}" />
+			</kafka:bootstrap-servers>
+			<kafka:topic-patterns >
+				<kafka:topic-pattern value="${secure::herokuKafka.topics}" />
+			</kafka:topic-patterns>
+		</kafka:consumer-plaintext-connection>
+	</kafka:consumer-config>
+	<kafka:producer-config name="Apache_Kafka_Producer_configuration" doc:name="Apache Kafka Producer configuration" doc:id="84c1c44b-4f79-485f-99ad-6b76739c5ca9" >
+		<kafka:producer-plaintext-connection endpointIdentificationAlgorithm='#[""]' >
+			<tls:context >
+				<tls:trust-store path="truststore.p12" password="${secure::herokuKafka.truststorePassword}" type="pkcs12" />
+				<tls:key-store type="pkcs12" path="keystore.p12" keyPassword="${secure::herokuKafka.keystoreKeyPassword}" password="${secure::herokuKafka.keystorePassword}" />
+			</tls:context>
+			<kafka:bootstrap-servers >
+				<kafka:bootstrap-server value="${secure::herokuKafka.serverURLs}" />
+			</kafka:bootstrap-servers>
+		</kafka:producer-plaintext-connection>
+	</kafka:producer-config>
+</mule>
