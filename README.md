@@ -24,7 +24,13 @@ For a video of the tutorial go [here](https://www.youtube.com/watch?v=5Xd5B_twt9
 
 ## Overview
 
-Detailed Description
+In this tutorial, we’ll walk you through how to publish and subscribe to streams of event data moving through an Apache Kafka cluster. You’ll learn how to:
+- Setup a managed Apache Kafka cluster on Heroku
+- Setup the Apache Kafka Connector configuration
+- Subscribe to events on a Kafka topics using the `Message Listener` operation
+- Use the `Publish` operation to send messages to Kafka topics
+
+Use the **Apache Kafka Connector** to participate in event driven architectures. De-couple your applications by publishing and subscribing to streams of data moving through distributed event stores like Apache Kafka.
 
 > This sample application is designed to run on MuleSoft's Anypoint Platform.
 
