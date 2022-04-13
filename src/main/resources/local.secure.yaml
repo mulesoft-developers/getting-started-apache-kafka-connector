@@ -3,5 +3,4 @@ herokuKafka:
   consumerGroup: "<your-consumer-group>"
   topics: "<your-topics>"
   keystorePassword: "![<your-key>]"
-  keystoreKeyPassword: "![<your-key>]"
   truststorePassword: "![<your-key>]"
