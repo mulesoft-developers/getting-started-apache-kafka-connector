@@ -52,9 +52,11 @@ Install instructions
 
 5. Click on Finish.
 	
-6. Update your Apache Kafka credentials in the local.secure.yaml file. In Anypoint Studio's package explorer open src/main/resources open local.secure.yaml and update the keystore and truststore passwords. Note that password and token should be encrypted (see video and tutorial above for details).
+6. Create your keystore and truststore files and copy into `src/main/resources`
+	
+7. Update your Apache Kafka credentials in the local.secure.yaml file. In Anypoint Studio's package explorer open src/main/resources open local.secure.yaml and update the keystore and truststore passwords. Note that password and token should be encrypted (see video and tutorial above for details).
 
-7. Add Runtime Configurations for env and secret.key variables. Set env to local and set encryption.key to be the value used to encrypt your secure property parameters.
+8. Add Runtime Configurations for env and secret.key variables. Set env to local and set encryption.key to be the value used to encrypt your secure property parameters.
 
 ## Contributing
 
